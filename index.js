@@ -1,9 +1,20 @@
-const { Client, Events, GatewayIntentBits, Collection } = require('discord.js');
+require('dotenv').config();
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const { Player } = require('discord-player');
 const { token } = require('./config.json');
 const path = require('node:path');
 const fs = require('node:fs');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+});
+const player = new Player(client, {
+    deafenOnJoin: true,
+    lagMonitor: 1000,
+    ytdlOptions: {
+        quality: 'highestaudio',
+    },
+});
 
 client.commands = new Collection();
 
@@ -38,5 +49,29 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args));
     }
 }
+
+player.events.on('playerStart', (queue, track) => {
+    queue.metadata.channel.send(`Started playing **${track.title}**!`);
+});
+
+player.events.on('audioTrackAdd', (queue, track) => {
+    if (queue.node.isPlaying()) {
+        queue.metadata.channel.send(`Added to the queue ${track.title}`);
+    } else {
+        queue.metadata.channel.send(`Track **${track.title}** queued`);
+    }
+});
+
+player.events.on('audioTracksAdd', (queue, track) => {
+    if (queue.node.isPlaying()) {
+        queue.metadata.channel.send(`Playlist added ${track.title}`);
+    } else {
+        queue.metadata.channel.send(
+            `Playlist starts from title: ${track.title}`
+        );
+    }
+});
+
+client.player = player;
 
 client.login(token);
