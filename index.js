@@ -1,12 +1,30 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const { Player } = require('discord-music-player');
 const { token } = require('./config.json');
 const path = require('node:path');
 const fs = require('node:fs');
 
 const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildVoiceStates,
+    ],
 });
+
+const player = new Player(client, {
+    leaveOnEmpty: false,
+    leaveOnEnd: false,
+    leaveOnStop: false,
+    volume: 100,
+    quality: 'high',
+    ytdlRequestOptions: {
+        highWaterMark: 1 << 62,
+    },
+});
+
+client.player = player;
 
 client.commands = new Collection();
 
@@ -41,5 +59,8 @@ for (const file of eventFiles) {
         client.on(event.name, (...args) => event.execute(...args));
     }
 }
+client.player.on('error', (error, queue) => {
+    console.log(`Error: ${error} in ${queue.guild.name}`);
+});
 
 client.login(token);
