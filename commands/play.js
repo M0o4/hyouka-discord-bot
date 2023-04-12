@@ -3,11 +3,11 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('play')
-        .setDescription('Echo text')
+        .setDescription('Play song')
         .addStringOption((option) =>
             option
                 .setName('song')
-                .setDescription('The input to echo back')
+                .setDescription('The song url or name')
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -26,6 +26,7 @@ module.exports = {
             });
         } catch (err) {
             console.log(err.message);
+            await interaction.reply(`I can't play this song (☍﹏⁰)｡`);
         }
     },
 };
