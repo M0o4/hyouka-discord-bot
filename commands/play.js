@@ -6,24 +6,26 @@ module.exports = {
         .setDescription('Echo text')
         .addStringOption((option) =>
             option
-                .setName('url')
+                .setName('song')
                 .setDescription('The input to echo back')
                 .setRequired(true)
         ),
     async execute(interaction) {
         try {
-            const url = interaction.options.getString('url');
-            let queue = interaction.client.player.createQueue(
-                interaction.guild.id
-            );
+            const song = interaction.options.getString('song');
+            const guildId = interaction.guild.id;
             await interaction.reply({
-                content: `Loading: ${url}`,
+                content: `Loading: ${song}`,
             });
-            interaction.client.queue = queue;
+            let queue = interaction.client.player.createQueue(guildId);
+            interaction.client.queues.push({ queue, guildId });
             await queue.join(interaction.member.voice.channel);
-            await queue.play(url);
+            await queue.play(song);
+            await interaction.editReply({
+                content: `Loading: ${queue.songs.at(-1).url}`,
+            });
         } catch (err) {
-            console.log(err);
+            console.log(err.message);
         }
     },
 };

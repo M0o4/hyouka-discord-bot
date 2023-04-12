@@ -14,7 +14,7 @@ const client = new Client({
 });
 
 const player = new Player(client, {
-    leaveOnEmpty: false,
+    leaveOnEmpty: true,
     leaveOnEnd: false,
     leaveOnStop: false,
     volume: 100,
@@ -25,7 +25,7 @@ const player = new Player(client, {
 });
 
 client.player = player;
-
+client.queues = [];
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'commands');

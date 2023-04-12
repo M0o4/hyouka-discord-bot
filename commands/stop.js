@@ -5,10 +5,17 @@ module.exports = {
         .setName('stop')
         .setDescription('Stops player'),
     async execute(interaction) {
-        const queue = interaction.client.queue;
-        if (queue) {
+        const guildId = interaction.guild.id;
+        const guildQueue = interaction.client.queues.find(
+            (item) => item.guildId === guildId
+        );
+        if (guildQueue) {
+            const { queue } = guildQueue;
             queue.stop();
-            await interaction.reply('Stopping player!\n\nЖеня урод заткнись!');
+            await interaction.reply('Stopping player! (✪‿✪)ノ');
+            interaction.client.queues = interaction.client.queues.filter(
+                (item) => item.queue !== queue
+            );
             return;
         }
 

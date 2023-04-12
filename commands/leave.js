@@ -5,13 +5,20 @@ module.exports = {
         .setName('leave')
         .setDescription('Leave player'),
     async execute(interaction) {
-        const queue = interaction.client.queue;
-        if (queue) {
+        const guildId = interaction.guild.id;
+        const guildQueue = interaction.client.queues.find(
+            (item) => item.guildId === guildId
+        );
+        if (guildQueue) {
+            const { queue } = guildQueue;
             queue.leave();
-            await interaction.reply('Leaving...');
+            await interaction.reply('Leaving... (˃̣̣̥▽˂̣̣̥)');
+            interaction.client.queues = interaction.client.queues.filter(
+                (item) => item.queue !== queue
+            );
             return;
         }
 
-        await interaction.reply('Я не могу ливнуть, Жень ливни!');
+        await interaction.reply(`I can't leave, (✖﹏✖)`);
     },
 };
