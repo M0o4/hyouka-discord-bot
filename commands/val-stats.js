@@ -35,7 +35,7 @@ module.exports = {
             const res = await axios.get(
                 `https://api.henrikdev.xyz/valorant/v3/matches/${region}/${name}/${tag}`
             );
-            console.log(res);
+            console.log(res.data.data);
             // if (!res?.data?.results) {
             //     await interaction.reply('Something went wrong (ノ﹏ヽ)');
             // }
