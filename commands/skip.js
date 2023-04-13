@@ -14,7 +14,9 @@ module.exports = {
             const song = guildQueue?.songs[0];
             if (song) {
                 await interaction.followUp(`Now playing: ${song.url}`);
+                return;
             }
+            await interaction.followUp(`Queue is empty (ﾐⓛᆽⓛﾐ)✧`);
             return;
         }
 
