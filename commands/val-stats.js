@@ -82,6 +82,7 @@ module.exports = {
             });
         } catch (err) {
             console.log(err);
+            await interaction.followUp(`Something went wrong (ᗒᗣᗕ)՞`);
         }
     },
 };
