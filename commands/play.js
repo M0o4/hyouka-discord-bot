@@ -1,4 +1,20 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+
+function createEmbed(song) {
+    return new EmbedBuilder()
+        .setColor(0x0099ff)
+        .setTitle(`${song.name || '???'}`)
+        .setURL(`${song.url || 'none'}`)
+        .setAuthor({ name: `${song.author || '???'}` })
+        .setDescription(`Duration: ${song.duration || '???'}`)
+        .setThumbnail(`${song.thumbnail || ''}`)
+        .addFields({
+            name: 'Inline field title',
+            value: 'Some value here',
+            inline: true,
+        })
+        .setImage(`${song.thumbnail || ''}`);
+}
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -20,8 +36,8 @@ module.exports = {
             let queue = interaction.client.player.createQueue(guildId);
             await queue.join(interaction.member.voice.channel);
             await queue.play(song);
-            await interaction.editReply({
-                content: `Loading: ${queue.songs.at(-1).url}`,
+            await interaction.followUp({
+                embeds: [createEmbed(queue.songs.at(-1).url)],
             });
         } catch (err) {
             console.log(err.message);
