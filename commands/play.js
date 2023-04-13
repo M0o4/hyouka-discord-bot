@@ -36,7 +36,7 @@ module.exports = {
             let queue = interaction.client.player.createQueue(guildId);
             await queue.join(interaction.member.voice.channel);
             await queue.play(song);
-            await interaction.followUp({
+            await interaction.editReply({
                 embeds: [createEmbed(queue.songs.at(-1).url)],
             });
         } catch (err) {
