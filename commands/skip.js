@@ -7,7 +7,6 @@ module.exports = {
     async execute(interaction) {
         const guildId = interaction.guild.id;
         const guildQueue = interaction.client.player.getQueue(guildId);
-        console.log(guildQueue);
         if (guildQueue) {
             guildQueue.skip();
             await interaction.reply(`Skipping song! (✪‿✪)ノ`);
