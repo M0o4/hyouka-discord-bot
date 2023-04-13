@@ -11,6 +11,10 @@ module.exports = {
         if (guildQueue) {
             guildQueue.skip();
             await interaction.reply(`Skipping song! (✪‿✪)ノ`);
+            const song = guildQueue?.songs[0];
+            if (song) {
+                await interaction.followUp(`Now playing: ${song.url}`);
+            }
             return;
         }
 
