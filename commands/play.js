@@ -7,12 +7,6 @@ function createEmbed(song) {
         .setURL(`${song.url || 'none'}`)
         .setAuthor({ name: `${song.author || '???'}` })
         .setDescription(`Duration: ${song.duration || '???'}`)
-        .setThumbnail(`${song.thumbnail || ''}`)
-        .addFields({
-            name: 'Inline field title',
-            value: 'Some value here',
-            inline: true,
-        })
         .setImage(`${song.thumbnail || ''}`);
 }
 
