@@ -18,7 +18,6 @@ module.exports = {
                 content: `Loading: ${song}`,
             });
             let queue = interaction.client.player.createQueue(guildId);
-            interaction.client.queues.push({ queue, guildId });
             await queue.join(interaction.member.voice.channel);
             await queue.play(song);
             await interaction.editReply({

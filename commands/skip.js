@@ -8,7 +8,7 @@ module.exports = {
         const guildId = interaction.guild.id;
         const guildQueue = interaction.client.player.getQueue(guildId);
         if (guildQueue) {
-            guildQueue.stop();
+            guildQueue.skip();
             await interaction.reply('Stopping player! (✪‿✪)ノ');
             return;
         }

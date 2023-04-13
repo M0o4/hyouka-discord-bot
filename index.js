@@ -25,7 +25,6 @@ const player = new Player(client, {
 });
 
 client.player = player;
-client.queues = [];
 client.commands = new Collection();
 
 const commandsPath = path.join(__dirname, 'commands');
