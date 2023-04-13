@@ -61,7 +61,7 @@ module.exports = {
             }
 
             const res = await axios.get(
-                `https://api.henrikdev.xyz/valorant/v3/matches/${region}/${name}/${player.tag}`
+                `https://api.henrikdev.xyz/valorant/v3/matches/${player.region}/${name}/${player.tag}`
             );
             const data = res?.data?.data;
             if (!data) {
