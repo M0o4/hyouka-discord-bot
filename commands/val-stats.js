@@ -5,7 +5,7 @@ function createEmbed(player, kda) {
     return new EmbedBuilder()
         .setColor(0xfa4141)
         .setTitle(`${player.name}#${player.tag}`)
-        .setDescription('Competitive statistics')
+        .setDescription('Last 5 games statistic')
         .addFields({ name: 'KDA', value: kda.toFixed(2) })
         .setImage(`${player.card.wide}`);
 }
