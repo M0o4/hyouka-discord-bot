@@ -68,17 +68,14 @@ module.exports = {
                 await interaction.reply('Something went wrong (ノ﹏ヽ)');
             }
 
-            const games = data.filter(
-                (item) => item.metadata.mode === 'Competitive'
-            );
-            const playerGames = games.map((item) =>
+            const games = data.map((item) =>
                 item.players.all_players.find(
                     (element) => element.name === player.name
                 )
             );
 
             await interaction.followUp({
-                embeds: [createEmbed(player, calculateKDA(playerGames))],
+                embeds: [createEmbed(player, calculateKDA(games))],
             });
         } catch (err) {
             await interaction.followUp(`Something went wrong (ᗒᗣᗕ)՞`);
