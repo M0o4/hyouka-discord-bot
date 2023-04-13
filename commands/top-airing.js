@@ -27,7 +27,8 @@ module.exports = {
                 `https://api.consumet.org/anime/gogoanime/top-airing`
             );
             if (!res?.data?.results) {
-                await interaction.reply('Something went wrong (ノ﹏ヽ)');
+                await interaction.followUp('Something went wrong (ノ﹏ヽ)');
+                return;
             }
             const animes = res.data.results;
             for (let anime of animes) {
