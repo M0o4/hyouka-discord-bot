@@ -81,7 +81,6 @@ module.exports = {
                 embeds: [createEmbed(player, calculateKDA(playerGames))],
             });
         } catch (err) {
-            console.log(err);
             await interaction.followUp(`Something went wrong (ᗒᗣᗕ)՞`);
         }
     },
