@@ -41,52 +41,52 @@ function createEmbed(anime) {
         )
         .addFields(
             {
-                name: `📌 ID anime: ${anime.mal_id}`,
+                name: '📌 ID anime: ',
+                value: `${anime.mal_id}`,
             },
             {
-                name: `⚙️ Trailer: ${anime?.trailer?.url || '???'}`,
+                name: '⚙️ Trailer: ',
+                value: `${anime?.trailer?.url || '???'}`,
             },
             {
-                name: `🗂 Type: ${anime?.type || '???'}`,
+                name: '🗂 Type: ',
+                value: `${anime?.type || '???'}`,
             },
             {
-                name: `📺 Source: ${anime?.source || '???'}`,
+                name: ' Source: ',
+                value: `${anime?.source || '???'}`,
             },
             {
-                name: `📀 Episodes: ${anime?.episodes || '???'}`,
+                name: '📀 Episodes: ',
+                value: ` ${anime?.episodes || '???'}`,
             },
             {
-                name: `⌛️ Status: ${anime?.status || '???'}`,
+                name: '⌛️ Status: ',
+                value: `${anime?.status || '???'}`,
             },
             {
-                name: `🔔 Genres: ${
+                name: '🔔 Genres: ',
+                value: `${
                     anime?.genres.map((item) => item.name).join(',') || '???'
                 }`,
             },
             {
-                name: `⏰ Duration: ${anime?.duration || '???'}`,
+                name: '⏰ Duration: ',
+                value: `${anime?.duration || '???'}`,
             },
             {
-                name: `🗓 Airing: ${getAnimeAiredDate(anime)}`,
+                name: '🗓 Airing: ',
+                value: `${getAnimeAiredDate(anime)}`,
             },
             {
-                name: `📊 Score: ${anime?.score || '???'}`,
+                name: '📊 Score: ',
+                value: ` ${anime?.score || '???'}`,
             },
             {
-                name: `⭐️ Rank: 4 ${anime?.rank || '???'}`,
+                name: '⭐️ Rank: ',
+                value: `${anime?.rank || '???'}`,
             }
-        )
-        .addFields({
-            name: 'Inline field title',
-            value: 'Some value here',
-            inline: true,
-        })
-        .setImage('https://i.imgur.com/AfFp7pu.png')
-        .setTimestamp()
-        .setFooter({
-            text: 'Some footer text here',
-            iconURL: 'https://i.imgur.com/AfFp7pu.png',
-        });
+        );
 }
 
 function delay(time) {
