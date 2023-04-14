@@ -41,52 +41,50 @@ function createEmbed(anime) {
         )
         .addFields(
             {
-                name: '📌 ID anime: ',
-                value: `${anime.mal_id}`,
-                inline: true,
+                name: `📌 ID anime: ${anime.mal_id}`,
+                value: '\u200B',
             },
             {
-                name: '⚙️ Trailer: ',
-                value: `${anime?.trailer?.url || '???'}`,
-                inline: true,
+                name: `⚙️ Trailer: ${anime?.trailer?.url || '???'}`,
+                value: '\u200B',
             },
             {
-                name: '🗂 Type: ',
-                value: `${anime?.type || '???'}`,
+                name: `🗂 Type: ${anime?.type || '???'}`,
+                value: '\u200B',
             },
             {
-                name: ' Source: ',
-                value: `${anime?.source || '???'}`,
+                name: `📺 Source: ${anime?.source || '???'}`,
+                value: '\u200B',
             },
             {
-                name: '📀 Episodes: ',
-                value: ` ${anime?.episodes || '???'}`,
+                name: `📀 Episodes: ${anime?.episodes || '???'}`,
+                value: '\u200B',
             },
             {
-                name: '⌛️ Status: ',
-                value: `${anime?.status || '???'}`,
+                name: `⌛️ Status: ${anime?.status || '???'}`,
+                value: '\u200B',
             },
             {
-                name: '🔔 Genres: ',
-                value: `${
+                name: `🔔 Genres: ${
                     anime?.genres.map((item) => item.name).join(',') || '???'
                 }`,
+                value: '\u200B',
             },
             {
-                name: '⏰ Duration: ',
-                value: `${anime?.duration || '???'}`,
+                name: `⏰ Duration: ${anime?.duration || '???'}`,
+                value: '\u200B',
             },
             {
-                name: '🗓 Airing: ',
-                value: `${getAnimeAiredDate(anime)}`,
+                name: `🗓 Airing: ${getAnimeAiredDate(anime)}`,
+                value: '\u200B',
             },
             {
-                name: '📊 Score: ',
-                value: ` ${anime?.score || '???'}`,
+                name: `📊 Score: ${anime?.score || '???'}`,
+                value: '\u200B',
             },
             {
-                name: '⭐️ Rank: ',
-                value: `${anime?.rank || '???'}`,
+                name: `⭐️ Rank: ${anime?.rank || '???'}`,
+                value: '\u200B',
             }
         );
 }
@@ -110,7 +108,7 @@ module.exports = {
             }
             for (let anime of animes) {
                 await interaction.followUp({ embeds: [createEmbed(anime)] });
-                await delay(1000);
+                await delay(1500);
             }
         } catch (err) {
             await interaction.followUp('Something went wrong (ノ﹏ヽ)');
