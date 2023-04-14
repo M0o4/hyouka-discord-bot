@@ -41,50 +41,50 @@ function createEmbed(anime) {
         )
         .addFields(
             {
-                name: `📌 ID anime: ${anime.mal_id}`,
-                value: '',
+                name: '📌 ID anime',
+                value: `${anime.mal_id}`,
             },
             {
-                name: `⚙️ Trailer: ${anime?.trailer?.url || '???'}`,
-                value: '',
+                name: '⚙️ Trailer',
+                value: `${anime?.trailer?.url || '???'}`,
             },
             {
-                name: `🗂 Type: ${anime?.type || '???'}`,
-                value: '',
+                name: '🗂 Type',
+                value: `${anime?.type || '???'}`,
             },
             {
-                name: `📺 Source: ${anime?.source || '???'}`,
-                value: '',
+                name: '📺 Source:',
+                value: `${anime?.source || '???'}`,
             },
             {
-                name: `📀 Episodes: ${anime?.episodes || '???'}`,
-                value: '',
+                name: '📀 Episodes',
+                value: `${anime?.episodes || '???'}`,
             },
             {
-                name: `⌛️ Status: ${anime?.status || '???'}`,
-                value: '',
+                name: '⌛️ Status',
+                value: `${anime?.status || '???'}`,
             },
             {
-                name: `🔔 Genres: ${
+                name: '🔔 Genres',
+                value: `${
                     anime?.genres.map((item) => item.name).join(',') || '???'
                 }`,
-                value: '',
             },
             {
-                name: `⏰ Duration: ${anime?.duration || '???'}`,
-                value: '',
+                name: '⏰ Duration',
+                value: ` ${anime?.duration || '???'}`,
             },
             {
-                name: `🗓 Airing: ${getAnimeAiredDate(anime)}`,
-                value: '',
+                name: '🗓 Airing',
+                value: `${getAnimeAiredDate(anime)}`,
             },
             {
-                name: `📊 Score: ${anime?.score || '???'}`,
-                value: '',
+                name: '📊 Score',
+                value: `${anime?.score || '???'}`,
             },
             {
-                name: `⭐️ Rank: ${anime?.rank || '???'}`,
-                value: '',
+                name: '⭐️ Rank',
+                value: `${anime?.rank || '???'}`,
             }
         );
 }
