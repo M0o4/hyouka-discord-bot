@@ -43,10 +43,12 @@ function createEmbed(anime) {
             {
                 name: '📌 ID anime: ',
                 value: `${anime.mal_id}`,
+                inline: true,
             },
             {
                 name: '⚙️ Trailer: ',
                 value: `${anime?.trailer?.url || '???'}`,
+                inline: true,
             },
             {
                 name: '🗂 Type: ',
