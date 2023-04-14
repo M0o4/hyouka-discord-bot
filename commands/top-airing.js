@@ -3,7 +3,7 @@ const axios = require('axios');
 
 function createEmbed(anime) {
     return new EmbedBuilder()
-        .setColor(0x0099ff)
+        .setColor(0xff007b)
         .setTitle(`${anime.title || anime.id}`)
         .setURL(`${anime.url || ''}`)
         .setDescription(

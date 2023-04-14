@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 function createEmbed(song) {
     return new EmbedBuilder()
-        .setColor(0x0099ff)
+        .setColor(0xff007b)
         .setTitle(`${song.name || '???'}`)
         .setURL(`${song.url || 'none'}`)
         .setAuthor({ name: `${song.author || '???'}` })

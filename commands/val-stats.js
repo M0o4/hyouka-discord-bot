@@ -3,7 +3,7 @@ const axios = require('axios');
 
 function createEmbed(player, kda) {
     return new EmbedBuilder()
-        .setColor(0xfa4141)
+        .setColor(0xff007b)
         .setTitle(`${player.name}#${player.tag}`)
         .setDescription('Last 5 games statistic')
         .addFields({ name: 'KDA', value: kda.toFixed(2) })
