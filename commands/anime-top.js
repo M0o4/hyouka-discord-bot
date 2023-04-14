@@ -42,49 +42,49 @@ function createEmbed(anime) {
         .addFields(
             {
                 name: `📌 ID anime: ${anime.mal_id}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `⚙️ Trailer: ${anime?.trailer?.url || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `🗂 Type: ${anime?.type || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `📺 Source: ${anime?.source || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `📀 Episodes: ${anime?.episodes || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `⌛️ Status: ${anime?.status || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `🔔 Genres: ${
                     anime?.genres.map((item) => item.name).join(',') || '???'
                 }`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `⏰ Duration: ${anime?.duration || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `🗓 Airing: ${getAnimeAiredDate(anime)}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `📊 Score: ${anime?.score || '???'}`,
-                value: '\u200B',
+                value: '',
             },
             {
                 name: `⭐️ Rank: ${anime?.rank || '???'}`,
-                value: '\u200B',
+                value: '',
             }
         );
 }
