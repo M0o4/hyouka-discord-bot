@@ -13,10 +13,10 @@ module.exports = {
         ),
     async execute(interaction) {
         try {
+            const song = interaction.options.getString('song');
             await interaction.reply({
                 content: `Loading: ${song}`,
             });
-            const song = interaction.options.getString('song');
             const guildId = interaction.guild.id;
             let queue = interaction.client.player.createQueue(guildId);
             await queue.join(interaction.member.voice.channel);
