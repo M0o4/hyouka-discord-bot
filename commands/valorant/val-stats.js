@@ -1,12 +1,18 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 
-function createEmbed(player, kda) {
+function createEmbed(player, kda, shots) {
+    const { bodyshots, headshots, legshots } = shots;
     return new EmbedBuilder()
         .setColor(0xff007b)
         .setTitle(`${player.name}#${player.tag}`)
         .setDescription('Last 5 games statistic')
-        .addFields({ name: 'KDA', value: kda.toFixed(2) })
+        .addFields(
+            { name: 'KDA', value: kda.toFixed(2) },
+            { name: 'bodyshots', value: bodyshots.toString(), inline: true },
+            { name: 'headshots', value: headshots.toString(), inline: true },
+            { name: 'legshots', value: legshots.toString(), inline: true }
+        )
         .setImage(`${player.card.wide}`);
 }
 
@@ -25,6 +31,26 @@ function calculateKDA(games) {
     );
 
     return (kills + assists) / deaths;
+}
+
+function getShotsStatistic(games) {
+    const bodyshots = games.reduce(
+        (accumulator, currentValue) =>
+            accumulator + currentValue.stats.bodyshots,
+        0
+    );
+    const headshots = games.reduce(
+        (accumulator, currentValue) =>
+            accumulator + currentValue.stats.headshots,
+        0
+    );
+    const legshots = games.reduce(
+        (accumulator, currentValue) =>
+            accumulator + currentValue.stats.legshots,
+        0
+    );
+
+    return { bodyshots, headshots, legshots };
 }
 
 module.exports = {
@@ -75,7 +101,13 @@ module.exports = {
             );
 
             await interaction.followUp({
-                embeds: [createEmbed(player, calculateKDA(games))],
+                embeds: [
+                    createEmbed(
+                        player,
+                        calculateKDA(games),
+                        getShotsStatistic(games)
+                    ),
+                ],
             });
         } catch (err) {
             await interaction.followUp(`Something went wrong (ᗒᗣᗕ)՞`);
