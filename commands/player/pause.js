@@ -11,14 +11,14 @@ module.exports = {
             const paused = guildQueue.paused;
             guildQueue.setPaused(!paused);
             if (paused) {
-                await interaction.reply('Resume player! (✪‿✪)ノ');
+                await interaction.reply('Resume player! ◝(^௰^)◜');
                 return;
             }
 
-            await interaction.reply('Pausing player! (✪‿✪)ノ');
+            await interaction.reply('Pausing player! (✪‿✪)ノ ');
             return;
         }
 
-        await interaction.reply('There is no players to pause!');
+        await interaction.reply('There is no players to pause! (˃ᆺ˂✿)');
     },
 };

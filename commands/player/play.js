@@ -13,11 +13,11 @@ module.exports = {
         ),
     async execute(interaction) {
         try {
-            const song = interaction.options.getString('song');
-            const guildId = interaction.guild.id;
             await interaction.reply({
                 content: `Loading: ${song}`,
             });
+            const song = interaction.options.getString('song');
+            const guildId = interaction.guild.id;
             let queue = interaction.client.player.createQueue(guildId);
             await queue.join(interaction.member.voice.channel);
             await queue.play(song);
@@ -26,7 +26,7 @@ module.exports = {
             });
         } catch (err) {
             console.log(err.message);
-            await interaction.reply(`I can't play this song (☍﹏⁰)｡`);
+            await interaction.followUp(`I can't play this song (☍﹏⁰)｡`);
         }
     },
 };
